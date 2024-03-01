@@ -4,6 +4,7 @@ import {Button, Card, Descriptions, Form, message, Input, Divider} from 'antd';
 
 import { useParams } from '@@/exports';
 import {getInterfaceInfoByIdUsingGET, invokeInterfaceInfoUsingPOST} from "@/services/swagger/interfaceInfoController";
+import moment from "moment";
 
 /**
  * 主页
@@ -69,8 +70,8 @@ const Index: React.FC = () => {
             <Descriptions.Item label="请求参数">{data.requestParams}</Descriptions.Item>
             <Descriptions.Item label="请求头">{data.requestHeader}</Descriptions.Item>
             <Descriptions.Item label="响应头">{data.responseHeader}</Descriptions.Item>
-            <Descriptions.Item label="创建时间">{data.createTime}</Descriptions.Item>
-            <Descriptions.Item label="更新时间">{data.updateTime}</Descriptions.Item>
+            <Descriptions.Item label="创建时间">{data.createTime?moment((data.createTime)).format('YYYY-MM-DD HH:mm:ss'):''}</Descriptions.Item>
+            <Descriptions.Item label="更新时间">{data.updateTime?moment((data.updateTime)).format('YYYY-MM-DD HH:mm:ss'):''}</Descriptions.Item>
           </Descriptions>
         ) : (
           <>接口不存在</>
